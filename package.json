@@ -1,0 +1,22 @@
+{
+  "name": "geotabtoelasticsearch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drumadrian/geotabtoelasticsearch.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/drumadrian/geotabtoelasticsearch/issues"
+  },
+  "homepage": "https://github.com/drumadrian/geotabtoelasticsearch#readme",
+  "dependencies": {
+    "elasticsearch": "^16.7.1"
+  }
+}
