@@ -9,7 +9,8 @@ const { KinesisClient, PutRecordCommand } = require("@aws-sdk/client-kinesis");
 
 console.log('hello world');
 const initialDate = new Date().getTime();
-const firehoseDeliveryStreamName = 'geotab';
+// const firehoseDeliveryStreamName = 'geotab';
+const firehoseDeliveryStreamARN = 'arn:aws:firehose:us-west-2:625284167417:deliverystream/geotab';
 const kinesisClient = new KinesisClient({ region: "us-west-2" });
 var messageID = 1;
 var synthetic_geotab_data = {
@@ -22,7 +23,7 @@ var synthetic_geotab_data = {
 
 for (let x = 0; x < 1000; x++){
     synthetic_geotab_data = get_data();
-    putRecord(synthetic_geotab_data);
+    putRecord(data : synthetic_geotab_data);
     console.table({'Message' : 'putRecord=Completed'});
 };
 
@@ -31,7 +32,8 @@ for (let x = 0; x < 1000; x++){
 ////////////////////////////////////////////////////////////////////////
 async function putRecord(record) {
   const params = {
-    DeliveryStreamName: firehoseDeliveryStreamName,
+    // DeliveryStreamName: firehoseDeliveryStreamName,
+    DeliveryStreamARN: firehoseDeliveryStreamARN,
     Record: {
       Data: JSON.stringify(record) + "\n",
     },
