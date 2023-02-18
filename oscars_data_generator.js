@@ -1,3 +1,4 @@
+const { KinesisClient, PutRecordCommand } = require("@aws-sdk/client-kinesis");
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
@@ -5,12 +6,8 @@
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
-// const firehoseDeliveryStreamName = "your-firehose-delivery-stream-name";
 
-const { KinesisClient, PutRecordCommand } = require("@aws-sdk/client-kinesis");
-
-// function main(){
-    // const deliveryStreamName = 'geotab';
+console.log('hello world');
 const initialDate = new Date().getTime();
 const firehoseDeliveryStreamName = 'geotab';
 const kinesisClient = new KinesisClient({ region: "us-west-2" });
@@ -22,20 +19,16 @@ var synthetic_geotab_data = {
     epoch_millis : initialDate,
     date : initialDate
 };
-console.log('hello world');
 
 for (let x = 0; x < 1000; x++){
     synthetic_geotab_data = get_data();
-    // putRecord(deliveryStreamName, synthetic_geotab_data, putRecordCallback);
-    // NEW Example usage
-    putRecord({ id: messageID, message: synthetic_geotab_data });
-    messageID = messageID + 1;
-    console.log('hello kinesis');
+    putRecord(synthetic_geotab_data);
     console.table({'Message' : 'putRecord=Completed'});
 };
-// }; //end main
 
-
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 async function putRecord(record) {
   const params = {
     DeliveryStreamName: firehoseDeliveryStreamName,
