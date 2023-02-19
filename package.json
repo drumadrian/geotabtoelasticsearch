@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@aws-sdk/client-firehose": "^3.272.0",
+    "@aws-sdk/client-kinesis": "^3.272.0"
+  }
+}
